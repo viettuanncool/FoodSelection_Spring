@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Food Chain Order</title>
+</head>
+<body>
+	<h2>Cart</h2>
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>Name</th>
+			<th>Price</th>
+			<th>Quantity</th>
+		</tr>
+		<tr th:each="o:${productList}">
+			<td th:text="${o.id}">12345</td>
+			<td th:text="${o.name}">Coke</td>
+			<td th:text="${o.price}">4.99</td>
+			<td th:text="${o.quantity}"></td>
+		</tr>
+	</table>
+	<form action="#" method="post" th:action="@{/delete}">
+	<h3>Select an item to remove from cart</h3>
+	<select name="name">
+		 <option disabled selected value> -- select an option -- </option>
+		<option th:each="o:${productList}" th:text="${o.name}"></option>
+	</select>
+	<input type="submit" value="Delete">
+	</form>
+	<h2>Selections</h2>
+	<table>
+		<tr>
+			<th></th>
+			<th>Name</th>
+			<th>Price</th>
+			<th>Quantity</th>
+			<th></th>
+			<th></th>
+		</tr>
+		<tr>
+			<form action="#" method="post" th:action="@{/orderProcess}" th:object="${product}">
+				<td><input type="hidden" name="id" value="1" /><img th:src="@{/coca-cola.jpg}" style="height:100px;width:100px"></td>
+				<td><input type="hidden" name="name" value="Coke" />Coke</td>
+				<td><input type="hidden" name="price" value="4.99" />4.99</td>
+				<td><input type="number" name="quantity" value="1"  /></td>
+				<td><input type="submit" value="Add to Cart" /></td>
+			</form>
+		</tr>
+		<tr>
+			<form action="#" method="post" th:action="@{/orderProcess}" th:object="${product}">
+				<td><input type="hidden" name="id" value="2" /><img th:src="@{/kimbap-korean-sushi-rolls-2118795-Hero-5b7dbdd346e0fb00250718b8.jpg}" style="height:100px;width:100px"></td>
+				<td><input type="hidden" name="name" value="Sushi" />Sushi</td>
+				<td><input type="hidden" name="price" value="8.29" />8.29</td>
+				<td><input type="number" name="quantity" value="1"  /></td>
+				<td><input type="submit" value="Add to Cart" /></td>
+			</form>
+		</tr>
+		<tr>
+			<form action="#" method="post" th:action="@{/orderProcess}" th:object="${product}">
+				<td><input type="hidden" name="id" value="3" /><img th:src="@{/takoyaki-recipe-ft-500x375.jpg}" style="height:100px;width:100px"></td>
+				<td><input type="hidden" name="name" value="Takoyaki" />Takoyaki</td>
+				<td><input type="hidden" name="price" value="3.69" />3.69</td>
+				<td><input type="number" name="quantity" value="1"  /></td>
+				<td><input type="submit" value="Add to Cart" /></td>
+			</form>
+		</tr>
+		<tr>
+			<form action="#" method="post" th:action="@{/orderProcess}" th:object="${product}">
+				<td><input type="hidden" name="id" value="4" /><img th:src="@{/1200px-Puffed_Rice_Cakes.jpg}" style="height:100px;width:100px"></td>
+				<td><input type="hidden" name="name" value="Rice cake" />Rice Cake</td>
+				<td><input type="hidden" name="price" value="1.15" />1.15</td>
+				<td><input type="number" name="quantity" value="1" /></td>
+				<td><input type="submit" value="Add to Cart" /></td>
+			</form>
+		</tr>
+	</table>
+	<button><a href="/checkOut">Checkout</a></button>
+</body>
+</html>

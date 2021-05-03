@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="ww.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Check Out</title>
+</head>
+<body>
+<h1>Checkout</h1>
+<table>
+		<tr>
+			<th>ID</th>
+			<th>Name</th>
+			<th>Price</th>
+			<th>Quantity</th>
+			<th>Total</th>
+		</tr>
+		<tr th:each="o:${productList}">
+			<td th:text="${o.id}">12345</td>
+			<td th:text="${o.name}">Coke</td>
+			<td th:text="${o.price}">4.99</td>
+			<td th:text="${o.quantity}"></td>
+			<td th:text="${o.total}"></td>
+		</tr>
+	</table>
+	
+	<h2>Order Total: </h2><h2 th:text="${total}"></h2>
+	<a href="/">Go back to ordering</a>
+</body>
+</html>
